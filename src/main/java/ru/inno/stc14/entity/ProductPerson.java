@@ -42,8 +42,8 @@ public class ProductPerson implements Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProductPerson mister = (ProductPerson) o;
-        return id == mister.id;
+        ProductPerson productPerson = (ProductPerson) o;
+        return id == productPerson.id;
     }
 
     @Override

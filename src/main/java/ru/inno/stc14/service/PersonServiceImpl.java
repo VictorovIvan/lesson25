@@ -30,7 +30,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public boolean addPerson(String name, String birth) {
-        Person person = PersonFactory.getPerson("test");
+        Person person = PersonFactory.getPerson(PersonService.constMode);
         person.setName(name);
 
         Date date = safeParseDate(birth);

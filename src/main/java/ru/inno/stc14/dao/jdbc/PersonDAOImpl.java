@@ -3,6 +3,7 @@ package ru.inno.stc14.dao.jdbc;
 import ru.inno.stc14.dao.PersonDAO;
 import ru.inno.stc14.entity.Person;
 import ru.inno.stc14.entity.PersonFactory;
+import ru.inno.stc14.service.PersonService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class PersonDAOImpl implements PersonDAO {
         try (PreparedStatement statement = connection.prepareStatement(SELECT_PERSON_SQL_TEMPLATE)) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    Person person = PersonFactory.getPerson("test");
+                    Person person = PersonFactory.getPerson(PersonService.constMode);
                     person.setId(resultSet.getInt(1));
                     person.setName(resultSet.getString(2));
                     Date date = new Date(resultSet.getLong(3));

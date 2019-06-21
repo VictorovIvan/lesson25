@@ -12,7 +12,11 @@ public interface PersonService {
 
     boolean addPerson(String name, String birth);
 
-    Person authorizationPerson = PersonFactory.getPerson("test");
+    String constMode = "test";
+
+    Person authorizationPerson = PersonFactory.getPerson(PersonService.constMode);
 
     Date safeParseDate(String birthStr);
+
+
 }

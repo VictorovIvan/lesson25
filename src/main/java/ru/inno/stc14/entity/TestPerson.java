@@ -1,5 +1,10 @@
 package ru.inno.stc14.entity;
 
+import ru.inno.stc14.service.PersonService;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -20,17 +25,23 @@ public class TestPerson implements Person {
 
     @Override
     public String getName() {
-        return name;
+        return "Smith Stewart";
     }
 
     @Override
     public void setName(String name) {
-        this.name = "Mrs " + name;
+        this.name = name;
     }
 
     @Override
     public Date getBirthDate() {
-        return birthDate;
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        try {
+            return format.parse("05.02.1988");
+        } catch (ParseException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -40,7 +51,10 @@ public class TestPerson implements Person {
 
     @Override
     public boolean equals(Object o) {
-        return true;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TestPerson testPerson = (TestPerson) o;
+        return id == testPerson.id;
     }
 
     @Override
